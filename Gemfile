@@ -17,6 +17,13 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'sidekiq'
 gem 'streamio-ffmpeg'
 gem 'http'
+gem 'whenever', :require => false
+gem 'sidekiq-client-cli'
+gem 'sidekiq-middleware'
+
+#gem 'echonest-ruby-api'
+#gem 'echowrap'
+gem 'ruby-echonest'
 
 gem 'sinatra', github: "sinatra/sinatra", require: false
 gem 'slim'

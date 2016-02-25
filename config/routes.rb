@@ -1,6 +1,9 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :matches
+  resources :fingerprints
+  resources :urls
   get 'home/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
