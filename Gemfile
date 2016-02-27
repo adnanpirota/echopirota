@@ -24,6 +24,7 @@ gem 'sidekiq-middleware'
 #gem 'echonest-ruby-api'
 #gem 'echowrap'
 gem 'ruby-echonest'
+gem 'curb'
 
 gem 'sinatra', github: "sinatra/sinatra", require: false
 gem 'slim'

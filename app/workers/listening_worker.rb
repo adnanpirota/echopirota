@@ -14,14 +14,12 @@ class ListeningWorker
     stream_path = get_stream_path(radio_uri)
     puts "stream_path osht: #{stream_path}"
     # repeat recording 20 times
-    #20.times do |times|
     20.times do |x|
       puts x
-      file_name_to_be_created = compose_file_name(radio_url)
-      record(file_name_to_be_created, radio_url, stream_path)
+      file_name = compose_file_name(radio_url)
+      record(file_name, radio_url, stream_path)
+      MatchingWorker.perform_async(file_name)
     end
-    #  puts "Times osht: #{times}"
-    #end
   end
 
   def uri_to_url(incomming_uri)
@@ -29,7 +27,8 @@ class ListeningWorker
   end
 
   def compose_file_name(url)
-    file_name = 'public/' + url.host + DateTime.now.to_s + '.mp3'
+    #file_name = 'public/' + url.host + DateTime.now.to_s + '.mp3'
+    file_name = 'public/' + url.host + Time.now.to_i.to_s + '.mp3'
   end
 
   def get_stream_path(radio_uri)

@@ -11,9 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160225133127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "fingerprints", force: :cascade do |t|
+    t.string   "fingerprint"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.integer  "fingerprint_id"
+    t.integer  "url_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "matches", ["fingerprint_id"], name: "index_matches_on_fingerprint_id", using: :btree
+  add_index "matches", ["url_id"], name: "index_matches_on_url_id", using: :btree
+
+  create_table "urls", force: :cascade do |t|
+    t.string   "url"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_foreign_key "matches", "fingerprints"
+  add_foreign_key "matches", "urls"
 end
