@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @radio.name %>
+</p>
+
+<p>
+  <strong>Uri:</strong>
+  <%= @radio.uri %>
+</p>
+
+<%= link_to 'Edit', edit_radio_path(@radio) %> |
+<%= link_to 'Back', radios_path %>

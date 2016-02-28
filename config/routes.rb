@@ -1,8 +1,11 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :matches
+  resources :radios
+  #resources :matches
   resources :fingerprints
+  resources :matches
+
   resources :urls
   get 'home/index'
 
